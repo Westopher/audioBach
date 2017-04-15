@@ -11,8 +11,30 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    var player = AVAudioPlayer()
+       var player = AVAudioPlayer()
 
+    @IBAction func play(_ sender: Any) {
+        
+        player.play()
+        
+    }
+
+    @IBAction func pause(_ sender: Any) {
+        
+        player.pause()
+        
+    }
+    
+    @IBAction func sliderMoved(_ sender: Any) {
+        
+        player.volume = slider.value
+        
+    }
+    
+    @IBOutlet var slider: UISlider!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -21,8 +43,6 @@ class ViewController: UIViewController {
         do {
             
             try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!))
-            
-            player.play()
             
         } catch {
         
